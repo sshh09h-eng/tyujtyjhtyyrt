@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CPA Fly</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>CPA Fly</h1>
+      <div id="userInfo">Loading...</div>
+    </header>
+
+    <main>
+      <section id="dashboard">
+        <div>Balance: <span id="balance">0</span> টাকা</div>
+        <div>Daily Ads: <span id="adsCount">0</span> /10</div>
+      </section>
+
+      <section id="tasks">
+        <div class="taskCard">
+          <h3>Rewarded Ad</h3>
+          <p>প্রতি বিজ্ঞাপনের জন্য 5 টাকা</p>
+          <button id="watchAdBtn">Watch Ad</button>
+        </div>
+
+        <div class="taskCard">
+          <h3>Join our Telegram Channel</h3>
+          <button id="openChannel">Open Channel</button>
+          <button id="checkClaimChannel">Check & Claim</button>
+        </div>
+
+        <div class="taskCard">
+          <h3>Withdraw</h3>
+          <input id="withdrawAmount" placeholder="Amount" type="number" />
+          <input id="withdrawAccount" placeholder="Bkash/ Nagad number" />
+          <select id="withdrawMethod">
+            <option value="bKash">bKash</option>
+            <option value="Nagad">Nagad</option>
+          </select>
+          <button id="withdrawBtn">Request Withdraw</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Monetag script inserted by user -->
+  <script src='//libtl.com/sdk.js' data-zone='10062649' data-sdk='show_10062649'></script>
+
+  <script>
+    function showRewardAdEmulator(onComplete){
+      // Monetag will provide real function; emulator kept for demo if needed.
+      if (typeof window.show_10062649 === 'function') {
+        try {
+          window.show_10062649();
+        } catch(e){ console.error(e); }
+      } else {
+        alert('Monetag ad will play for 30 seconds (simulated). Click OK to start.');
+        setTimeout(() => {
+          alert('Ad finished (simulated).');
+          onComplete && onComplete({ success: true });
+        }, 30000);
+      }
+    }
+  </script>
+
+  <script src="/app.js"></script>
+</body>
+</html>
